@@ -12,6 +12,8 @@ const refs = {
 refs.form.addEventListener('submit', onFormSubmit);
 refs.textarea.addEventListener('input', onTextareaInput);
 
+popTextarea();
+
 function onFormSubmit(e){
 	e.preventDefault();
 	e.current.reset();
@@ -23,5 +25,10 @@ function onTextareaInput(e){
 }
 
 function popTextarea(){
+	const saveMessage = localStorage.getItem("feedback-form-state");
 
+	if(saveMessage){
+		console.log(saveMessage);
+		refs.textarea.value = saveMessage;
+	}
 }
