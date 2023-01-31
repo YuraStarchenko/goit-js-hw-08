@@ -24,8 +24,10 @@ function onFormInput(){
 
 function onFormSubmit(e){
 	e.preventDefault();
+  
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
+  
   console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 }
 
@@ -34,5 +36,6 @@ function popTextarea(){
 	if(saveMessage){
 		refs.email.value = saveMessage.email;
 		refs.textarea.value = saveMessage.message;
+    console.log(saveMessage);
 	}
 }
