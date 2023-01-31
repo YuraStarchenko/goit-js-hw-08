@@ -26,6 +26,7 @@ function onFormSubmit(e){
 	e.preventDefault();
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
+  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 }
 
 function popTextarea(){
