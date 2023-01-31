@@ -1,43 +1,49 @@
 import throttle from 'lodash.throttle';
 
-const	form = document.querySelector('.feedback-form');
-
-const formData = {}
+const refs = {
+	form: document.querySelector('.feedback-form'),
+	email: document.querySelector('[type="email"]'),
+	textarea: document.querySelector('textarea'),
+};
 
 const STORAGE_KEY = "feedback-form-state";
 
-form.addEventListener('input', throttle(onFormInput, 500));
-form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('input', throttle(onFormInput, 500));
+refs.form.addEventListener('submit', onFormSubmit);
 
 popTextarea();
 
 function onFormInput(){
-		formData.email = form.email.value,
-		formData.message = form.message.value,
- 
+	const formData = {
+		email: refs.form.email.value,
+		message: refs.form.message.value,
+	};
+
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+  console.log(formData);
 }
 
 function onFormSubmit(e){
 	e.preventDefault();
-  
-  formData.email = form.email.value,
-	formData.message = form.message.value,
-  
-  if (formData.email === '' || formData.message === '') {
+
+	const formData = {
+		email: refs.form.email.value,
+		message: refs.form.message.value,
+	};
+
+	if (formData.email === '' || formData.message === '') {
     return alert(`Fill in all fields!`);
   }
   
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
-  
-  console.log(formData);
 }
 
 function popTextarea(){
 	const saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  
 	if(saveMessage){
-		form.value = saveMessage.email;
-		form.value = saveMessage.message;
+		refs.email.value = saveMessage.email;
+		refs.textarea.value = saveMessage.message;
 	}
 }
