@@ -19,16 +19,16 @@ function onFormInput(){
 		message: refs.form.message.value,
 	};
   
+    if (refs.email.value === "" || refs.textarea.value === "") {
+        return alert(`Заповніть всі поля!`);
+ }
+  
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   console.log(formData);
 }
 
 function onFormSubmit(e){
 	e.preventDefault();
-  
-  if (refs.email.value === "" || refs.textarea.value === "") {
-        return alert(`Заповніть всі поля!`);
- }
   
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
