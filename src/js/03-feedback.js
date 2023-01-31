@@ -28,7 +28,7 @@ function onFormSubmit(e){
   formData.email = refs.form.email.value,
 	formData.message = refs.form.message.value,
   
-  if(formData.email === '' || formData.message === '') {
+  if (formData.email === '' || formData.message === '') {
     return alert(`Fill in all fields!`);
   }
   
