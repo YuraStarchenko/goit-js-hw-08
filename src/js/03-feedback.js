@@ -19,9 +19,9 @@ function onFormInput(){
 		message: refs.form.message.value,
 	};
   
-   if (refs.input.value === "" || refs.textarea.value === "") {
-      return alert(`Заповніть всі поля!`);
-   }
+  if (formData.email === '' || formData.message === '') {
+    return alert(`Заповніть всі поля!`);;
+  }
   
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   
