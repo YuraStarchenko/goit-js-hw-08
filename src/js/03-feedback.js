@@ -28,8 +28,8 @@ function onFormSubmit(e){
   formData.email = refs.form.email.value,
 	formData.message = refs.form.message.value,
   
-  if (formData.email === '' || formData.message === '') {
-    return alert(`Заповніть всі поля!`);
+  if(formData.email === '' || formData.message === '') {
+    return alert(`Fill in all fields!`);
   }
   
 	e.target.reset();
