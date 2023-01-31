@@ -20,7 +20,6 @@ function onFormInput(){
 	};
 
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-  console.log(formData);
 }
 
 function onFormSubmit(e){
@@ -34,6 +33,8 @@ function onFormSubmit(e){
 	if (formData.email === '' || formData.message === '') {
     return alert(`Fill in all fields!`);
   }
+
+	console.log(formData);
   
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
