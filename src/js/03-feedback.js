@@ -20,7 +20,7 @@ function onFormInput(){
 	};
   
   if (formData.email === '' || formData.message === '') {
-    return alert(`Заповніть всі поля!`);;
+    return alert(`Заповніть всі поля!`);
   }
   
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
