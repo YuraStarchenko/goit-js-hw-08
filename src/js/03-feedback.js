@@ -18,6 +18,10 @@ function onFormInput(){
 		email: refs.form.email.value,
 		message: refs.form.message.value,
 	};
+  
+  if (formData.email === '' || formData.message === '') {
+    return;
+  }
 
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
