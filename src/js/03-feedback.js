@@ -19,10 +19,6 @@ function onFormInput(){
 		message: refs.form.message.value,
 	};
   
-  if (formData.email === '' || formData.message === '') {
-    return;
-  }
-
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   console.log(formData);
 }
@@ -30,13 +26,16 @@ function onFormInput(){
 function onFormSubmit(e){
 	e.preventDefault();
   
+  if (refs.email.value === "" || refs.textarea.value === "") {
+        return alert(`Заповніть всі поля!`);
+ }
+  
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
 }
 
 function popTextarea(){
 	const saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  
 	if(saveMessage){
 		refs.email.value = saveMessage.email;
 		refs.textarea.value = saveMessage.message;
