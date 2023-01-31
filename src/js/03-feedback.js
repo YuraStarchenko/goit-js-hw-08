@@ -25,6 +25,10 @@ function onFormInput(){
 function onFormSubmit(e){
 	e.preventDefault();
   
+         if (refs.input.value === "" || refs.textarea.value === "") {
+            return alert(`Please fill in all the fields!`);
+       }
+  
   const SubmitJSON = JSON.parse(localStorage.getItem(STORAGE_KEY));
   console.log(SubmitJSON);
   
