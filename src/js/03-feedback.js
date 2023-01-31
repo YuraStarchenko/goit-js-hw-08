@@ -6,6 +6,8 @@ const refs = {
 	textarea: document.querySelector('textarea'),
 };
 
+const formData = {}
+
 const STORAGE_KEY = "feedback-form-state";
 
 refs.form.addEventListener('input', throttle(onFormInput, 500));
@@ -14,17 +16,17 @@ refs.form.addEventListener('submit', onFormSubmit);
 popTextarea();
 
 function onFormInput(){
-	const formData = {
-		email: refs.form.email.value,
-		message: refs.form.message.value,
-	};
+		formData.email = refs.form.email.value,
+		formData.message = refs.form.message.value,
  
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-  console.log(formData);
 }
 
 function onFormSubmit(e){
 	e.preventDefault();
+  
+  formData.email = refs.form.email.value,
+	formData.message = refs.form.message.value,
   
   if (formData.email === '' || formData.message === '') {
     return alert(`Заповніть всі поля!`);
@@ -32,6 +34,8 @@ function onFormSubmit(e){
   
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
+  
+  console.log(formData);
 }
 
 function popTextarea(){
