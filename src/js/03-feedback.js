@@ -20,11 +20,14 @@ function onFormInput(){
 	};
   
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-  console.log(formData);
 }
 
 function onFormSubmit(e){
 	e.preventDefault();
+  
+  const SubmitJSON = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  console.log(SubmitJSON);
+  
 	e.target.reset();
 	localStorage.removeItem(STORAGE_KEY);
 }
